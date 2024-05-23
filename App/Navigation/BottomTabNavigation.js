@@ -1,7 +1,7 @@
 import { View, Text, Dimensions } from "react-native";
 import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Activities from "../Screens/Activities";
 import HomeScreen from "../Screens/HomeScreen";
 import UserScreen from "../Screens/UserScreen";
@@ -32,7 +32,7 @@ export default function BottomTabNavigation() {
           elevation: 10,
         },
         tabBarLabelStyle: {
-          fontSize: 15,
+          fontSize: 17,
           marginBottom: 5, // Giảm khoảng cách giữa icon và text
         },
       }}
@@ -66,7 +66,7 @@ export default function BottomTabNavigation() {
           headerShown: false,
           tabBarLabel: "Tôi",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+            <MaterialCommunityIcons name="account" color={color} size={35} />
           ),
         }}
       />
