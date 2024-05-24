@@ -1,0 +1,58 @@
+const cars = [
+    {
+      id: 1,
+      name: "Vinfast",
+      image: require("../../assets/images/cars/Tesla-Model-Y-PNG-Image.png"),
+      price: 200000,
+      rating: 4.5,
+      isMyFavorite: false,
+      company_id: 1,
+    },
+    {
+      id: 2,
+      name: "Telsa",
+      image: require("../../assets/images/cars/Tesla-Model-X-PNG-Isolated-Pic.png"),
+      price: 200000,
+      rating: 3.5,
+      isMyFavorite: true,
+      company_id: 1,
+    },
+    {
+      id: 3,
+      name: "BWM model",
+      image: require("../../assets/images/cars/Tesla-Model-3-PNG-Isolated-HD.png"),
+      price: 300000,
+      rating: 3.3,
+      isMyFavorite: false,
+      company_id: 1,
+    },
+    {
+      id: 4,
+      name: "Porche model X",
+      image: require("../../assets/images/cars/Red-Tesla-Model-S-PNG.png"),
+      price: 200000,
+      rating: 4.3,
+      isMyFavorite: false,
+      company_id: 1,
+    },
+    {
+      id: 5,
+      name: "BWM model",
+      image: require("../../assets/images/cars/Tesla-Model-3-PNG-Isolated-HD.png"),
+      price: 300000,
+      rating: 3.3,
+      isMyFavorite: false,
+      company_id: 1,
+    },
+    {
+      id: 6,
+      name: "Porche model X",
+      image: require("../../assets/images/cars/Red-Tesla-Model-S-PNG.png"),
+      price: 200000,
+      rating: 4.3,
+      isMyFavorite: false,
+      company_id: 1,
+    },
+  ];
+  
+  export default cars;

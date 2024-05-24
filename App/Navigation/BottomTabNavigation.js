@@ -2,7 +2,7 @@ import { View, Text, Dimensions } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Activities from "../Screens/Activities";
+import NotificationScreen from "../Screens/NotificationScreen";
 import HomeScreen from "../Screens/HomeScreen";
 import UserScreen from "../Screens/UserScreen";
 
@@ -22,13 +22,12 @@ export default function BottomTabNavigation() {
         tabBarStyle: {
           position: "absolute",
           height: 62,
-          width: 300,
+          width: tabBarWidth,
           bottom: 17,
           left: tabBarMarginHorizontal,
           right: tabBarMarginHorizontal,
           borderRadius: 50,
           backgroundColor: "#0A8065",
-          borderTopWidth: 0,
           elevation: 10,
         },
         tabBarLabelStyle: {
@@ -49,11 +48,11 @@ export default function BottomTabNavigation() {
         }}
       />
       <Tab.Screen
-        name="Activities"
-        component={Activities}
+        name="Notification"
+        component={NotificationScreen}
         options={{
           headerShown: false,
-          tabBarLabel: "Hoạt động",
+          tabBarLabel: "Thông báo",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="bell" color={color} size={size} />
           ),
