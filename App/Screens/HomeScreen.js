@@ -18,18 +18,29 @@ import LinearGradient from 'react-native-linear-gradient';
 import cars from '../Data/Car';
 import colors from '../Config/colors';
 import {useNavigation} from '@react-navigation/native';
+import {Picker} from '@react-native-picker/picker';
 
 const HomeScreen = () => {
   const scrollY = useRef(new Animated.Value(0)).current;
   const {width} = useWindowDimensions();
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+  const [time, setTime] = useState('');
+  const [location, setLocation] = useState('Thủ Đức, Hồ Chí Minh');
+  const [locationPickerOpen, setLocationPickerOpen] = useState(false);
   const [activeBox, setActiveBox] = useState(null); // state to track active box
   // Gradient color in car rental
   const gradient = [colors.lightDark, colors.green];
   // Function to format the price
   const formatPrice = price => {
     return new Intl.NumberFormat('de-DE').format(price);
+  };
+  const handleConfirmDate = selectedDate => {
+    setOpen(false);
+    setDate(selectedDate);
+    setTime(
+      selectedDate.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}),
+    );
   };
   const navigation = useNavigation();
   return (
@@ -165,9 +176,44 @@ const HomeScreen = () => {
                     style={{paddingEnd: 5}}
                   />
                   <View>
-                    <TouchableOpacity>
-                      <Text>Chọn địa điểm </Text>
-                      <Text style={{fontSize: 10}}> Thủ Đức, Hồ chí minh</Text>
+                    <TouchableOpacity
+                      onPress={() => setLocationPickerOpen(true)}>
+                      <Text>Chọn địa điểm</Text>
+                      <Text style={{fontSize: 10}}>{location}</Text>
+                    </TouchableOpacity>
+                    {locationPickerOpen && (
+                      <Picker
+                        selectedValue={location}
+                        onValueChange={itemValue => {
+                          setLocation(itemValue);
+                          setLocationPickerOpen(false);
+                        }}
+                        style={{height: 50, width: 150}}>
+                        <Picker.Item
+                          label="Thủ Đức, Hồ Chí Minh"
+                          value="Thủ Đức, Hồ Chí Minh"
+                        />
+                        <Picker.Item
+                          label="Quận 1, Hồ Chí Minh"
+                          value="Quận 1, Hồ Chí Minh"
+                        />
+                        <Picker.Item
+                          label="Quận 3, Hồ Chí Minh"
+                          value="Quận 3, Hồ Chí Minh"
+                        />
+                        {/* Add more locations as needed */}
+                      </Picker>
+                    )}
+                  </View>
+                  <MaterialCommunityIcons
+                    name="timer"
+                    size={25}
+                    style={{paddingStart: 30, paddingEnd: 5}}
+                  />
+                  <View>
+                    <TouchableOpacity onPress={() => setOpen(true)}>
+                      <Text>Chọn ngày</Text>
+                      <Text style={{fontSize: 10}}>{time || '7 : 00'}</Text>
                     </TouchableOpacity>
                   </View>
                   <MaterialCommunityIcons
@@ -177,32 +223,16 @@ const HomeScreen = () => {
                   />
                   <View>
                     <TouchableOpacity onPress={() => setOpen(true)}>
-                      <Text>Chọn ngày </Text>
-                      <Text style={{fontSize: 10}}> 7 : 00</Text>
-                    </TouchableOpacity>
-                  </View>
-                  <MaterialCommunityIcons
-                    name="timer"
-                    size={25}
-                    style={{paddingStart: 30, paddingEnd: 5}}
-                  />
-                  <View>
-                    <TouchableOpacity onPress={() => setOpen(true)}>
-                      <Text>Chọn ngày </Text>
-                      <Text style={{fontSize: 10}}> 17 : 00</Text>
+                      <Text>Chọn ngày</Text>
+                      <Text style={{fontSize: 10}}>{time || '17 : 00'}</Text>
                     </TouchableOpacity>
                   </View>
                   <DatePicker
                     modal
                     open={open}
                     date={date}
-                    onConfirm={date => {
-                      setOpen(false);
-                      setDate(date);
-                    }}
-                    onCancel={() => {
-                      setOpen(false);
-                    }}
+                    onConfirm={handleConfirmDate}
+                    onCancel={() => setOpen(false)}
                   />
                 </ScrollView>
                 <TouchableOpacity

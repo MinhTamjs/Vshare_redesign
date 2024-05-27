@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import NotificationScreen from "../Screens/NotificationScreen";
 import HomeScreen from "../Screens/HomeScreen";
 import UserScreen from "../Screens/UserScreen";
+import TestScreen from "../Screens/TestScreen";
 
 
 export default function BottomTabNavigation() {
@@ -19,6 +20,7 @@ export default function BottomTabNavigation() {
       screenOptions={{
         tabBarActiveTintColor: "#F9BC19",
         tabBarInactiveTintColor: "#FFFFFF",
+        tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
           height: 62,
@@ -64,6 +66,17 @@ export default function BottomTabNavigation() {
         options={{
           headerShown: false,
           tabBarLabel: "Tôi",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={35} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="TestTab"
+        component={TestScreen}
+        options={{
+          headerShown: false,
+          tabBarLabel: "Test",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={35} />
           ),
