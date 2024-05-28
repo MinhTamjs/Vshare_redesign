@@ -10,6 +10,7 @@ import {
   useWindowDimensions,
   TouchableOpacity,
   Button,
+  Modal,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import Slider from './Components/Slider';
@@ -181,29 +182,56 @@ const HomeScreen = () => {
                       <Text>Chọn địa điểm</Text>
                       <Text style={{fontSize: 10}}>{location}</Text>
                     </TouchableOpacity>
-                    {locationPickerOpen && (
-                      <Picker
-                        selectedValue={location}
-                        onValueChange={itemValue => {
-                          setLocation(itemValue);
-                          setLocationPickerOpen(false);
-                        }}
-                        style={{height: 50, width: 150}}>
-                        <Picker.Item
-                          label="Thủ Đức, Hồ Chí Minh"
-                          value="Thủ Đức, Hồ Chí Minh"
-                        />
-                        <Picker.Item
-                          label="Quận 1, Hồ Chí Minh"
-                          value="Quận 1, Hồ Chí Minh"
-                        />
-                        <Picker.Item
-                          label="Quận 3, Hồ Chí Minh"
-                          value="Quận 3, Hồ Chí Minh"
-                        />
-                        {/* Add more locations as needed */}
-                      </Picker>
-                    )}
+                    <Modal
+                      transparent={true}
+                      visible={locationPickerOpen}
+                      animationType="slide"
+                      onRequestClose={() => setLocationPickerOpen(false)}>
+                      <View
+                        style={{
+                          flex: 1,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        }}>
+                        <View
+                          style={{
+                            backgroundColor: 'white',
+                            padding: 20,
+                            borderRadius: 10,
+                          }}>
+                          <Text style={{marginBottom: 10}}>Chọn địa điểm</Text>
+                          <Picker
+                            selectedValue={location}
+                            onValueChange={itemValue => {
+                              setLocation(itemValue);
+                              setLocationPickerOpen(false);
+                            }}
+                            style={{height: 50, width: 200}}>
+                            <Picker.Item
+                              label="Thủ Đức, Hồ Chí Minh"
+                              value="Thủ Đức, Hồ Chí Minh"
+                            />
+                            <Picker.Item
+                              label="Quận 1, Hồ Chí Minh"
+                              value="Quận 1, Hồ Chí Minh"
+                            />
+                            <Picker.Item
+                              label="Quận 3, Hồ Chí Minh"
+                              value="Quận 3, Hồ Chí Minh"
+                            />
+                            {/* Thêm item */}
+                          </Picker>
+                          <TouchableOpacity
+                            onPress={() => setLocationPickerOpen(false)}
+                            style={{marginTop: 20}}>
+                            <Text style={{textAlign: 'center', color: 'blue'}}>
+                              Đóng
+                            </Text>
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    </Modal>
                   </View>
                   <MaterialCommunityIcons
                     name="timer"

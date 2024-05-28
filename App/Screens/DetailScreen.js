@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const DetailScreen = ({route}) => {
   return (
-    <View>
+    <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
         <LinearGradient colors={['#C6F7A2', '#0E561E']} style={styles.header}>
           <Image
@@ -43,28 +43,20 @@ const DetailScreen = ({route}) => {
           <Text style={styles.description}>Porche model X</Text>
         </View>
       </ScrollView>
-      <View style={{paddingStart: 30, paddingEnd: 30, paddingTop: 50}}>
-        <TouchableOpacity
-          style={{
-            backgroundColor: '#056938',
-            borderRadius: 10,
-            padding: 8,
-            marginTop: 15,
-            marginBottom: 5,
-            alignContent: 'center',
-            alignItems: 'center',
-            elevation: 10,
-          }}>
-          <Text style={{color: 'white', fontWeight: '600', fontSize: 19}}>
-            Đặt xe
-          </Text>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.rentButton}>
+          <Text style={styles.rentButtonText}>Đặt xe</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
   container: {
     flexGrow: 1,
     backgroundColor: '#f5f5f5',
@@ -116,10 +108,20 @@ const styles = StyleSheet.create({
     marginTop: 10,
     lineHeight: 24,
   },
+  buttonContainer: {
+    padding: 20,
+  },
+  rentButton: {
+    backgroundColor: '#056938',
+    borderRadius: 10,
+    padding: 15,
+    alignItems: 'center',
+    elevation: 10,
+  },
   rentButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
+    color: 'white',
+    fontWeight: '600',
+    fontSize: 19,
   },
 });
 
