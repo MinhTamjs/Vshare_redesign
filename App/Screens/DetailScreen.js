@@ -11,41 +11,63 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const DetailScreen = ({route}) => {
+const DetailScreen = ({route, navigation}) => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
-        <LinearGradient colors={['#C6F7A2', '#0E561E']} style={styles.header}>
+        <LinearGradient colors={['#C6F7A2', '#889B91']} style={styles.header}>
+          <View style={styles.headerIcons}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Image
+                source={require('./../../assets/images/icons/chevron.png')}
+                style={{height: 40, width: 40}}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => console.log('Favorite pressed')}>
+              <Image
+                source={require('./../../assets/images/icons/like.png')}
+                style={{height: 40, width: 40}}
+              />
+            </TouchableOpacity>
+          </View>
           <Image
             source={require('../../assets/images/cars/Red-Tesla-Model-S-PNG.png')}
             style={styles.image}
           />
-          <Text style={styles.title}>Porche model X</Text>
-          <Text style={styles.subtitle}>Porche model X</Text>
+          <Text style={styles.title}>Bugatti Vision</Text>
         </LinearGradient>
 
         <View style={styles.detailsContainer}>
-          <Text style={styles.sectionTitle}>Thông tin chi tiết</Text>
-          <View style={styles.specs}>
-            <Icon name="speed" size={24} color="#333" />
-            <Text style={styles.specText}>Loại xe: Auto</Text>
+          <Text style={styles.sectionTitle}>Các tính năng</Text>
+          <View style={styles.featuresContainer}>
+            <View style={styles.featureBox}>
+              <Icon name="speed" size={24} color="#1A804A" />
+              <Text style={styles.featureTitle}>Điều khiển</Text>
+              <Text style={styles.featureSubtitle}>Tự động</Text>
+            </View>
+            <View style={styles.featureBox}>
+              <Icon name="event-seat" size={24} color="#1A804A" />
+              <Text style={styles.featureTitle}>Số chỗ ngồi</Text>
+              <Text style={styles.featureSubtitle}>4 chỗ</Text>
+            </View>
+            <View style={styles.featureBox}>
+              <Icon name="ac-unit" size={24} color="#1A804A" />
+              <Text style={styles.featureTitle}>Điều hòa</Text>
+              <Text style={styles.featureSubtitle}>Tùy chỉnh nhiệt độ</Text>
+            </View>
+            <View style={styles.featureBox}>
+              <Icon name="local-gas-station" size={24} color="#1A804A" />
+              <Text style={styles.featureTitle}>Nhiên liệu</Text>
+              <Text style={styles.featureSubtitle}>Petrol</Text>
+            </View>
           </View>
-          <View style={styles.specs}>
-            <Icon name="local-gas-station" size={24} color="#333" />
-            <Text style={styles.specText}>Nhiên liệu: 92</Text>
-          </View>
-          <View style={styles.specs}>
-            <Icon name="event-seat" size={24} color="#333" />
-            <Text style={styles.specText}>Chỗ ngồi: 5</Text>
-          </View>
-
-          <Text style={styles.sectionTitle}>Mô tả</Text>
-          <Text style={styles.description}>Porche model X</Text>
         </View>
       </ScrollView>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.rentButton}>
-          <Text style={styles.rentButtonText}>Đặt xe</Text>
+      <View style={styles.footerContainer}>
+        <Text style={styles.priceText}>Tổng giá</Text>
+        <Text style={styles.priceAmount}>200000/Ngày</Text>
+        <TouchableOpacity style={styles.bookButton}>
+          <Text style={styles.bookButtonText}>Đặt ngay</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -67,10 +89,17 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     marginBottom: 20,
+    position: 'relative',
+  },
+  headerIcons: {
+    top: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
   },
   image: {
-    width: 500,
-    height: 200,
+    width: 600,
+    height: 350,
     borderRadius: 10,
   },
   title: {
@@ -79,49 +108,69 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginTop: 10,
   },
-  subtitle: {
-    fontSize: 18,
-    color: '#fff',
-    marginBottom: 10,
-  },
   detailsContainer: {
     paddingHorizontal: 20,
   },
   sectionTitle: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 10,
+    alignSelf: 'center',
   },
-  specs: {
+  featuresContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
-  specText: {
-    marginLeft: 10,
-    fontSize: 16,
-    color: '#333',
-  },
-  description: {
-    fontSize: 16,
-    color: '#666',
-    marginTop: 10,
-    lineHeight: 24,
-  },
-  buttonContainer: {
-    padding: 20,
-  },
-  rentButton: {
-    backgroundColor: '#056938',
-    borderRadius: 10,
+  featureBox: {
+    width: '45%',
+    backgroundColor: '#fff',
     padding: 15,
+    borderRadius: 10,
+    marginBottom: 20,
     alignItems: 'center',
-    elevation: 10,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 5,
   },
-  rentButtonText: {
+  featureTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  featureSubtitle: {
+    fontSize: 14,
+    color: '#666',
+    marginTop: 5,
+  },
+  footerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 20,
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  priceText: {
+    fontSize: 20,
+    color: '#1A804A',
+  },
+  priceAmount: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: "#1A804A",
+  },
+  bookButton: {
+    backgroundColor: '#59E29A',
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  bookButtonText: {
     color: 'white',
     fontWeight: '600',
-    fontSize: 19,
+    fontSize: 16,
   },
 });
 

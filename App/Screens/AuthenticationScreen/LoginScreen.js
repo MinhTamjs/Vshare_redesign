@@ -47,12 +47,10 @@ const LoginScreen = () => {
         <Text style={styles.forgotPassword}>Quên mật khẩu?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate("Home")}>
-        <LinearGradient
-          colors={['#2AB38E', '#3b5998', '#192f6a']}
-          style={styles.gradient}>
-          <Text style={styles.loginButtonText}>Đăng nhập</Text>
-        </LinearGradient>
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => navigation.navigate('Home')}>
+        <Text style={styles.loginButtonText}>Đăng nhập</Text>
       </TouchableOpacity>
 
       <Text style={styles.signUpText}>
@@ -62,11 +60,11 @@ const LoginScreen = () => {
       <Text style={styles.orText}>Hoặc đăng nhập bằng</Text>
       <View style={styles.socialLoginContainer}>
         <TouchableOpacity style={styles.socialButton}>
-          <Icon name="google" size={24} color="#DB4437" />
+          <Image source={require('./../../../assets/images/icons/google.png')} />
           <Text style={styles.socialButtonText}>Google</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.socialButton}>
-          <Icon name="facebook" size={24} color="#4267B2" />
+        <Image source={require('./../../../assets/images/icons/Facebook.png')} />
           <Text style={styles.socialButtonText}>Facebook</Text>
         </TouchableOpacity>
       </View>
@@ -128,6 +126,9 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginVertical: 10,
     overflow: 'hidden',
+    backgroundColor: '#61837A',
+    paddingVertical: 15,
+    alignItems: 'center',
   },
   gradient: {
     paddingVertical: 15,
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
   loginButtonText: {
     color: 'white',
     fontSize: 18,
-    fontWeight: "500",
+    fontWeight: '500',
   },
   signUpText: {
     fontSize: 16,
