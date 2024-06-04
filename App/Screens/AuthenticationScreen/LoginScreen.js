@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
+    padding: 30,
   },
   socialButton: {
     flexDirection: 'row',

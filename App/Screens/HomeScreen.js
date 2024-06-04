@@ -106,7 +106,15 @@ const HomeScreen = () => {
                     source={require('./../../assets/images/icons/car_icon.png')}
                     style={styles.boxImage}
                   />
-                  <Text style={styles.boxText}>Ô tô</Text>
+                  <Text
+                    style={[
+                      styles.boxText,
+                      {
+                        color: activeBox === 'oto' ? '#FFF' : '#157844',
+                      },
+                    ]}>
+                    Ô tô
+                  </Text>
                 </TouchableOpacity>
               </View>
               <View style={{width: 100}}>
@@ -123,7 +131,15 @@ const HomeScreen = () => {
                     source={require('./../../assets/images/icons/bike_icon.png')}
                     style={styles.boxImage}
                   />
-                  <Text style={styles.boxText}>Xe máy</Text>
+                  <Text
+                    style={[
+                      styles.boxText,
+                      {
+                        color: activeBox === 'xemay' ? '#FFF' : '#157844',
+                      },
+                    ]}>
+                    Xe máy
+                  </Text>
                 </TouchableOpacity>
               </View>
               <View style={{width: 100}}>
@@ -140,7 +156,13 @@ const HomeScreen = () => {
                     source={require('./../../assets/images/icons/user_icon.png')}
                     style={styles.boxImage}
                   />
-                  <Text style={styles.boxText}>Dịch vụ khác</Text>
+                  <Text
+                    style={[
+                      styles.boxText,
+                      {color: activeBox === 'dichvukhac' ? '#FFF' : '#157844'},
+                    ]}>
+                    Dịch vụ khác
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>

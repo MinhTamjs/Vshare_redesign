@@ -31,48 +31,45 @@ const UserScreen = () => {
       </View>
       <View style={styles.featuresContainer}>
         <View style={styles.featureBox}>
-          <Icon name="credit-card" size={24} color="#1A804A" />
+          <Icon name="credit-card" size={24} color="#0A542D" />
           <Text style={styles.featureText}>Giấy phép</Text>
         </View>
         <View style={styles.featureBox}>
-          <Icon name="account-box" size={24} color="#1A804A" />
+          <Icon name="account-box" size={24} color="#0A542D" />
           <Text style={styles.featureText}>Hỗ trợ</Text>
         </View>
         <View style={styles.featureBox}>
-          <Icon name="description" size={24} color="#1A804A" />
+          <Icon name="description" size={24} color="#0A542D" />
           <Text style={styles.featureText}>Điều khoản</Text>
         </View>
       </View>
 
       <View style={styles.menuContainer}>
         <TouchableOpacity
-          style={styles.menuItem}
-          onPress={() => navigation.navigate('Profile')}>
-          <Icon name="person" size={24} color="#1A804A" />
+          style={styles.menuItem}>
+          <Icon name="person" size={24} color="#0A542D" />
           <Text style={styles.menuText}>Thông tin</Text>
-          <Icon name="chevron-right" size={24} color="#1A804A" />
+          <Icon name="chevron-right" size={24} color="#0A542D" />
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.menuItem}
-          onPress={() => navigation.navigate('Bookings')}>
-          <Icon name="calendar-today" size={24} color="#1A804A" />
+          style={styles.menuItem}>
+          <Icon name="calendar-today" size={24} color="#0A542D" />
           <Text style={styles.menuText}>Hướng dẫn</Text>
-          <Icon name="chevron-right" size={24} color="#1A804A" />
+          <Icon name="chevron-right" size={24} color="#0A542D" />
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.menuItem}
-          onPress={() => navigation.navigate('Settings')}>
-          <Icon name="settings" size={24} color="#1A804A" />
+          style={styles.menuItem}>
+          <Icon name="settings" size={24} color="#0A542D" />
           <Text style={styles.menuText}>Cài đặt</Text>
-          <Icon name="chevron-right" size={24} color="#1A804A" />
+          <Icon name="chevron-right" size={24} color="#0A542D" />
         </TouchableOpacity>
       </View>
 
       <View style={styles.logoutContainer}>
         <TouchableOpacity
           style={styles.logoutButton}
-          onPress={() => console.log('Logout pressed')}>
-          <Icon name="logout" size={24} color="#1A804A" />
+          onPress={() => navigation.navigate('Login')}>
+          <Icon name="logout" size={24} color="#0A542D" />
           <Text style={styles.logoutText}>Đăng xuất</Text>
         </TouchableOpacity>
       </View>
@@ -109,7 +106,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginVertical: 5,
-    color: '#1A804A',
+    color: '#0A542D',
   },
   featuresContainer: {
     flexDirection: 'row',

@@ -6,6 +6,7 @@ import NotificationScreen from "../Screens/NotificationScreen";
 import HomeScreen from "../Screens/HomeScreen";
 import UserScreen from "../Screens/UserScreen";
 import TestScreen from "../Screens/TestScreen";
+import CheckoutScreen from "../Screens/CheckoutScreen";
 
 
 export default function BottomTabNavigation() {
@@ -73,12 +74,12 @@ export default function BottomTabNavigation() {
       />
       <Tab.Screen
         name="TestTab"
-        component={TestScreen}
+        component={CheckoutScreen}
         options={{
           headerShown: false,
-          tabBarLabel: "Test",
+          tabBarLabel: "Thanh toán",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={35} />
+            <MaterialCommunityIcons name="contactless-payment" color={color} size={35} />
           ),
         }}
       />
