@@ -13,10 +13,10 @@ const CheckoutScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.header}>Checkout</Text>
+      <Text style={styles.header}>Thanh toán</Text>
 
       <View style={styles.optionContainer}>
-        <Text style={styles.optionTitle}>Debit/Credit Card</Text>
+        <Text style={styles.optionTitle}>Thẻ ngân hàng/Credit Card</Text>
         <TouchableOpacity
           style={[
             styles.card,
@@ -57,6 +57,16 @@ const CheckoutScreen = () => {
         <View
           style={
             selectedOption === 'cash' ? styles.selectedCircle : styles.circle
+          }
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.cashOption}
+        onPress={() => setSelectedOption('momo')}>
+        <Text style={styles.optionTitle}>Thanh toán bằng momo</Text>
+        <View
+          style={
+            selectedOption === 'momo' ? styles.selectedCircle : styles.circle
           }
         />
       </TouchableOpacity>
@@ -130,6 +140,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#F3F7F5',
     borderRadius: 10,
+    marginTop: 20,
   },
   circle: {
     width: 24,

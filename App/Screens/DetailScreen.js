@@ -10,8 +10,10 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {useNavigation} from '@react-navigation/native';
 
-const DetailScreen = ({route, navigation}) => {
+const DetailScreen = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -66,7 +68,7 @@ const DetailScreen = ({route, navigation}) => {
       <View style={styles.footerContainer}>
         <Text style={styles.priceText}>Tổng giá</Text>
         <Text style={styles.priceAmount}>200000/Ngày</Text>
-        <TouchableOpacity style={styles.bookButton}>
+        <TouchableOpacity style={styles.bookButton} onPress={() => navigation.navigate('Checkout')}>
           <Text style={styles.bookButtonText}>Đặt ngay</Text>
         </TouchableOpacity>
       </View>

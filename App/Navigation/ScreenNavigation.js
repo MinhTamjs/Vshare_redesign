@@ -6,6 +6,7 @@ import BottomTabNavigation from './BottomTabNavigation';
 import LoginScreen from '../Screens/AuthenticationScreen/LoginScreen';
 import DetailScreen from '../Screens/DetailScreen';
 import SignUpScreen from '../Screens/AuthenticationScreen/SignUpScreen';
+import CheckoutScreen from '../Screens/CheckoutScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,11 @@ const ScreenNavigation = () => {
           name="Signup"
           options={{headerShown: false}}
           component={SignUpScreen}
+        />
+        <Stack.Screen
+          name="Checkout"
+          options={{headerShown: false}}
+          component={CheckoutScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
