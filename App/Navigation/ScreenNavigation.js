@@ -7,6 +7,7 @@ import LoginScreen from '../Screens/AuthenticationScreen/LoginScreen';
 import DetailScreen from '../Screens/DetailScreen';
 import SignUpScreen from '../Screens/AuthenticationScreen/SignUpScreen';
 import CheckoutScreen from '../Screens/CheckoutScreen';
+import AddNewCardScreen from '../Screens/AddNewCardScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,11 @@ const ScreenNavigation = () => {
           name="Checkout"
           options={{headerShown: false}}
           component={CheckoutScreen}
+        />
+        <Stack.Screen
+          name="Add_New_Card"
+          options={{headerShown: false}}
+          component={AddNewCardScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

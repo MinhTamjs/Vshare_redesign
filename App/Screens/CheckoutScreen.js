@@ -7,9 +7,12 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import {useNavigation} from '@react-navigation/native';
 
 const CheckoutScreen = () => {
   const [selectedOption, setSelectedOption] = useState('card');
+  const navigation = useNavigation();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -23,13 +26,17 @@ const CheckoutScreen = () => {
             selectedOption === 'card1' && styles.selectedCard,
           ]}
           onPress={() => setSelectedOption('card1')}>
-          <Image
-            source={require('./../../assets/images/banners/Banner_2.png')}
-            style={styles.cardImage}
-          />
-          <Text style={styles.cardText}>**** **** **** 2847</Text>
-          <Text style={styles.cardHolder}>Tâm Minh</Text>
-          <Text style={styles.cardExpiry}>04/30</Text>
+          <LinearGradient
+            colors={['#6DD5FA', '#2C25BF']}
+            style={styles.gradientCard}>
+            <Image
+              source={require('./../../assets/images/logo/visa_logo.png')}
+              style={styles.cardImage}
+            />
+            <Text style={styles.cardText}>**** **** **** 2847</Text>
+            <Text style={styles.cardHolder}>Tâm Minh</Text>
+            <Text style={styles.cardExpiry}>04/30</Text>
+          </LinearGradient>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -37,15 +44,19 @@ const CheckoutScreen = () => {
             selectedOption === 'card2' && styles.selectedCard,
           ]}
           onPress={() => setSelectedOption('card2')}>
-          <Image
-            source={require('./../../assets/images/banners/Banner_2.png')}
-            style={styles.cardImage}
-          />
-          <Text style={styles.cardText}>**** **** **** 1234</Text>
-          <Text style={styles.cardHolder}>Minh Tâm</Text>
-          <Text style={styles.cardExpiry}>08/25</Text>
+          <LinearGradient
+            colors={['#6DD5FA', '#2C25BF']}
+            style={styles.gradientCard}>
+            <Image
+              source={require('./../../assets/images/logo/visa_logo.png')}
+              style={styles.cardImage}
+            />
+            <Text style={styles.cardText}>**** **** **** 1234</Text>
+            <Text style={styles.cardHolder}>Minh Tâm</Text>
+            <Text style={styles.cardExpiry}>08/25</Text>
+          </LinearGradient>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.addCardButton}>
+        <TouchableOpacity style={styles.addCardButton} onPress={() => navigation.navigate('Add_New_Card')}>
           <Text style={styles.addCardText}>+ Thêm thẻ mới</Text>
         </TouchableOpacity>
       </View>
@@ -74,6 +85,7 @@ const CheckoutScreen = () => {
       <TouchableOpacity style={styles.payButton}>
         <Text style={styles.payButtonText}>Thanh toán ngay</Text>
       </TouchableOpacity>
+      <View style={styles.spacer}></View>
     </ScrollView>
   );
 };
@@ -98,32 +110,36 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   card: {
-    backgroundColor: '#F3F7F5',
-    borderRadius: 10,
+    borderRadius: 15,
+    marginBottom: 15,
+    width: 370,
+  },
+  gradientCard: {
     padding: 20,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: 'transparent',
+    borderRadius: 5,
   },
   selectedCard: {
-    borderColor: '#3BB475',
+    borderColor: '#25BFBA',
+    borderWidth: 5,
+    borderRadius: 10,
   },
   cardImage: {
-    width: 60,
-    height: 40,
-    resizeMode: 'contain',
+    width: 100,
+    height: 50,
     marginBottom: 10,
   },
   cardText: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#FFF',
   },
   cardHolder: {
     fontSize: 16,
+    color: '#FFF',
   },
   cardExpiry: {
     fontSize: 14,
-    color: 'gray',
+    color: '#FFF',
   },
   addCardButton: {
     alignItems: 'center',
@@ -166,6 +182,9 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  spacer: {
+    height: 100,
   },
 });
 

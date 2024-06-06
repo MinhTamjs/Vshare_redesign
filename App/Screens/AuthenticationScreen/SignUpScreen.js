@@ -20,16 +20,23 @@ const SignUpScreen = () => {
         source={require('../../../assets/images/cars/Red-Tesla-Model-S-PNG.png')}
         style={styles.logo}
       />
-      <Text style={styles.welcomeText}>Chào mừng đến với Vshare</Text>
+      <Text style={styles.welcomeText}>Đăng ký tài khoản Vshare</Text>
       <Text style={styles.instructionText}>
-        Bắt đầu bằng cách đăng nhập vào tài khoản của bạn
+        Bắt đầu bằng cách đăng ký tài khoản cho bạn
       </Text>
-
+      <View style={styles.inputContainer}>
+        <Icon name="user" size={24} color="black" />
+        <TextInput
+          style={styles.input}
+          placeholder="Nhập Tên"
+          placeholderTextColor="#aaa"
+        />
+      </View>
       <View style={styles.inputContainer}>
         <Icon name="envelope" size={24} color="black" />
         <TextInput
           style={styles.input}
-          placeholder="minhtamitech@gmail.com"
+          placeholder="Nhập email"
           placeholderTextColor="#aaa"
         />
       </View>
@@ -37,31 +44,47 @@ const SignUpScreen = () => {
         <MaterialIcon name="lock-outline" size={24} color="black" />
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder="Mật khẩu"
           placeholderTextColor="#aaa"
           secureTextEntry
         />
       </View>
-
-      <TouchableOpacity>
-        <Text style={styles.forgotPassword}>Quên mật khẩu?</Text>
-      </TouchableOpacity>
-
+      <View style={styles.inputContainer}>
+        <MaterialIcon name="lock-outline" size={24} color="black" />
+        <TextInput
+          style={styles.input}
+          placeholder="Nhập lại mật khẩu"
+          placeholderTextColor="#aaa"
+          secureTextEntry
+        />
+      </View>
       <TouchableOpacity
         style={styles.loginButton}
         onPress={() => navigation.navigate('Home')}>
-        <LinearGradient
-          colors={['#2AB38E', '#3b5998', '#192f6a']}
-          style={styles.gradient}>
-          <Text style={styles.loginButtonText}>Đăng nhập</Text>
-        </LinearGradient>
+        <Text style={styles.loginButtonText}>Đăng ký</Text>
       </TouchableOpacity>
 
-      <Text style={styles.signUpText}>
-        Không có tài khoản? <Text style={styles.signUpLink}>Đăng ký</Text>
+      <Text
+        style={styles.signUpText}
+        onPress={() => navigation.navigate('Login')}>
+        Đã có tài khoản? <Text style={styles.signUpLink}>Đăng nhập</Text>
       </Text>
 
-      <Text style={styles.orText}>Hoặc đăng nhập bằng</Text>
+      <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
+        <View style={{flex: 1, height: 1, backgroundColor: 'green'}} />
+        <View>
+          <Text
+            style={{
+              width: 50,
+              textAlign: 'center',
+              color: '#61837A',
+              fontSize: 17,
+            }}>
+            Hoặc
+          </Text>
+        </View>
+        <View style={{flex: 1, height: 1, backgroundColor: 'green'}} />
+      </View>
       <View style={styles.socialLoginContainer}>
         <TouchableOpacity style={styles.socialButton}>
           <Icon name="google" size={24} color="#DB4437" />
@@ -130,6 +153,9 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginVertical: 10,
     overflow: 'hidden',
+    backgroundColor: '#61837A',
+    paddingVertical: 15,
+    alignItems: 'center',
   },
   gradient: {
     paddingVertical: 15,
@@ -158,6 +184,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
+    padding: 30,
   },
   socialButton: {
     flexDirection: 'row',

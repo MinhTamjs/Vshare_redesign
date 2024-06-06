@@ -53,18 +53,38 @@ const LoginScreen = () => {
         <Text style={styles.loginButtonText}>Đăng nhập</Text>
       </TouchableOpacity>
 
-      <Text style={styles.signUpText}>
+      <Text
+        style={styles.signUpText}
+        onPress={() => navigation.navigate('Signup')}>
         Không có tài khoản? <Text style={styles.signUpLink}>Đăng ký</Text>
       </Text>
 
-      <Text style={styles.orText}>Hoặc đăng nhập bằng</Text>
+      <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
+        <View style={{flex: 1, height: 1, backgroundColor: 'green'}} />
+        <View>
+          <Text
+            style={{
+              width: 50,
+              textAlign: 'center',
+              color: '#61837A',
+              fontSize: 17,
+            }}>
+            Hoặc
+          </Text>
+        </View>
+        <View style={{flex: 1, height: 1, backgroundColor: 'green'}} />
+      </View>
       <View style={styles.socialLoginContainer}>
         <TouchableOpacity style={styles.socialButton}>
-          <Image source={require('./../../../assets/images/icons/google.png')} />
+          <Image
+            source={require('./../../../assets/images/icons/google.png')}
+          />
           <Text style={styles.socialButtonText}>Google</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.socialButton}>
-        <Image source={require('./../../../assets/images/icons/Facebook.png')} />
+          <Image
+            source={require('./../../../assets/images/icons/Facebook.png')}
+          />
           <Text style={styles.socialButtonText}>Facebook</Text>
         </TouchableOpacity>
       </View>
